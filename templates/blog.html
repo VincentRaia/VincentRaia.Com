@@ -1,0 +1,28 @@
+{%  extends "base.html" %}
+{% block head_title %}Blog{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+                <h1 class="page-header">
+                    Vincent Raia / Blog
+                    <small>thoughts and code</small>
+                </h1>
+                {% block posts %}
+                {% endblock %}
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+            {% include 'blog_sidebar.html' %}
+        </div>
+{% endblock %}

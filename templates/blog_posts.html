@@ -1,0 +1,27 @@
+{% extends "blog.html" %}
+
+{% block posts %}
+    {% for post in posts %}
+    <h2>
+        <a href="{{post.slug}}">{{post.title}}</a>
+    </h2>
+    <!--Removing author tag
+    <p class="lead">
+        by <a href="index.php">Vincent Raia</a>
+    </p>
+    -->
+    <p>
+        <span class="glyphicon glyphicon-time"></span> <time datetime="{{post.created|date:"c"}}">{{post.created|date}}</time>
+    </p>
+    <!--Removing image
+    <hr>
+        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+    <hr>
+    -->
+    <p>
+        {{post.description}}
+    </p>
+    <a class="btn btn-primary" href="{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <hr>
+    {% endfor %}
+{% endblock %}

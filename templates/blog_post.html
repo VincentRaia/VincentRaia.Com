@@ -1,0 +1,25 @@
+{% extends "blog.html" %}
+
+{% block posts %}
+    <h2>
+        {{post.title}}
+    </h2>
+    <!--Removing author tag
+    <p class="lead">
+        by <a href="index.php">Vincent Raia</a>
+    </p>
+    -->
+    <p>
+        <span class="glyphicon glyphicon-time"></span> <time datetime="{{post.created|date:"c"}}">{{post.created|date}}</time>
+    </p>
+    <!--Removing image
+    <hr>
+        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+    <hr>
+    -->
+    <p>
+        {{post.content}}
+    </p>
+
+    <hr>
+{% endblock %}
