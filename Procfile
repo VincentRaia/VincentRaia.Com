@@ -1,3 +1,3 @@
-gunicorn VincentRaia.wsgi
+web: gunicorn VincentRaia.wsgi
 
 
