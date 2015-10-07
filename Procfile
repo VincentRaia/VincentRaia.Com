@@ -1,0 +1,2 @@
+gunicorn VincentRaia.wsgi
+
