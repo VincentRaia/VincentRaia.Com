@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'description']
     # fields to filter the change list with
     list_filter = ['published', 'created']
-    # fileds to search in chnge list
+    # fileds to search in change list
     search_fields = ['title', 'description', 'content']
     # enable the date dirll down on change list
     date_hierarchy = 'created'
