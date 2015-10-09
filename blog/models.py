@@ -3,12 +3,13 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.core.urlresolvers import reverse
+from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
-    description = models.TextField()
-    content = models.TextField()
+    description = RichTextField()
+    content = RichTextField()
     published = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 

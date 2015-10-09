@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'landing',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,3 +119,5 @@ STATICFILES_DIRS = (
 )
 
 SITE_ID = 1
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
