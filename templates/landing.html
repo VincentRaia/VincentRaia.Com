@@ -92,7 +92,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>{{ content.aboutme_heading }}</h2>
-                <p>{{ content.aboutme_text }}</p>
+                <p>{{ content.aboutme_text|safe }}</p>
             </div>
         </div>
     </section>
@@ -103,7 +103,7 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>{{ content.aboutblog_heading }}</h2>
-                    <p>{{ content.aboutblog_text }}</p>
+                    <p>{{ content.aboutblog_text|safe }}</p>
                 </div>
             </div>
         </div>
@@ -114,7 +114,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>{{ content.contact_heading }}</h2>
-                <p>{{ content.contact_text }}</p>
+                <p>{{ content.contact_text|safe }}</p>
                 <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
