@@ -19,8 +19,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin', include(admin.site.urls)),
     url(r'^blog/$', 'blog.views.index'),
     url(r'^blog/(?P<slug>[\w\-]+)/$', 'blog.views.post'),
-    url(r'^', 'landing.views.index'),
+    url(r'^$', 'landing.views.index'),
 )

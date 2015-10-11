@@ -20,5 +20,5 @@ def __unicode__(self):
     return u'%s' % self.title
 
 def get_absolute_url(self):
-    return reverse('blog.views.post', args=[self.slug])
+    return 'blog/ %s' % reverse('blog.views.post', args=[self.slug])
 
