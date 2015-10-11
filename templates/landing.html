@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">{{ content.heading }}</h1>
-                        <p class="intro-text">{{ content.tagline }}</p>
+                        <p><span class="intro-text"></span></p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -157,6 +157,19 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'js/grayscale.js' %}"></script>
+
+    <!-- typed.js for tag line-->
+    <script src="{% static 'js/typed.js' %}"></script>
+    <script>
+        $(function(){
+          $(".intro-text").typed({
+            strings: ['{{ content.tagline }}'],
+            typeSpeed: 100
+          });
+        });
+    </script>
+
+
 
 </body>
 
