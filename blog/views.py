@@ -38,7 +38,7 @@ def getSearchResults(request):
     except EmptyPage:
         returned_page = pages.page(pages.num_pages)
     # Display the search results
-    return render_to_response('search.html',
+    return render_to_response('blog/post_list.html',
                               {'page_obj': returned_page,
                                'object_list': returned_page.object_list,
                                'search': query})
