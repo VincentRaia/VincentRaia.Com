@@ -1,0 +1,28 @@
+{% extends "blog.html" %}
+
+{% block posts %}
+    {% if object_list %}
+        {% for post in object_list %}
+        <h2>
+            <a href="/blog/{{post.slug}}">{{post.title}}</a>
+        </h2>
+        <p>
+            <span class="glyphicon glyphicon-time"></span> <time datetime="{{post.created|date:"c"}}">{{post.created|date}}</time>
+        </p>
+        <p>
+            {{post.description|safe}}
+        </p>
+        <a class="btn btn-primary" href="/blog/{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        {% endfor %}
+    {% else %}
+        <p>No posts found</p>
+    {% endif %}
+    <ul class="pager">
+    {% if page_obj.has_previous %}
+    <li class="previous"><a href="/search?page={{ page_obj.previous_page_number }}&q={{ search }}">Previous Page</a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li class="next"><a href="/search?page={{ page_obj.next_page_number }}&q={{ search }}">Next Page</a></li>
+    {% endif %}
+    </ul>
+{% endblock %}
