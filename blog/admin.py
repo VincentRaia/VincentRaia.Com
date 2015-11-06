@@ -2,7 +2,7 @@ from django.contrib import admin
 import os
 # Register your models here.
 from django.contrib import admin
-from blog.models import Post, Category
+from blog.models import Post, Category, Tag
 
 class PostAdmin(admin.ModelAdmin):
     # fields display on change list
@@ -20,3 +20,4 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category)
+admin.site.register(Tag)
