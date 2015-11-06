@@ -4,6 +4,7 @@
     <h2>
         {{post.title}}
     </h2>
+    Posted in <a href="{{post.category.get_absolute_url}}">{{post.category.name}}</a>
     <!--Removing author tag
     <p class="lead">
         by <a href="index.php">Vincent Raia</a>

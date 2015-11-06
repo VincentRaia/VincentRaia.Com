@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
-from blog.models import Post
+from blog.models import Post, Category
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
+from django.views.generic import ListView
 
 # Create your views here.
 def index(request):
@@ -41,3 +42,12 @@ def getSearchResults(request):
                               {'page_obj': returned_page,
                                'object_list': returned_page.object_list,
                                'search': query})
+
+class CategoryListView(ListView):
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        try:
+            category = Category.objects.get(slug=slug)
+            return Post.objects.filter(category=category)
+        except Category.DoesNotExist:
+            return Post.objects.none()
