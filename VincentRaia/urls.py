@@ -23,4 +23,5 @@ urlpatterns = patterns('',
     url(r'^blog/$', 'blog.views.index'),
     url(r'^blog/(?P<slug>[\w\-]+)/$', 'blog.views.post'),
     url(r'^$', 'landing.views.index'),
+    url(r'^search', 'blog.views.getSearchResults'),
 )
