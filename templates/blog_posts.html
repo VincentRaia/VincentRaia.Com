@@ -5,7 +5,7 @@
     <h2>
         <a href="{{post.slug}}">{{post.title}}</a>
     </h2>
-    Posted in <a href="{{post.category.get_absolute_url}}">{{post.category.name}}</a>
+    <b>Posted in</b> <a href="{{post.category.get_absolute_url}}">{{post.category.name}}</a>
     <!--Removing author tag
     <p class="lead">
         by <a href="index.php">Vincent Raia</a>
@@ -22,6 +22,15 @@
     <p>
         {{post.description|safe}}
     </p>
+    <b>Tagged as</b>
+    {% for tag in post.tags.all %}
+        {% if tag == post.tags.all.last %}
+            <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
+        {% else %}
+            <a href="{{tag.get_absolute_url}}">{{tag.name}},</a>
+        {% endif %}
+    {% endfor %}
+    <p></p>
     <a class="btn btn-primary" href="{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     <!--<hr>-->
     {% endfor %}

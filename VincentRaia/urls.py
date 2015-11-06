@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from blog.views import CategoryListView
-from blog.models import Category
+from blog.views import CategoryListView, TagListView
+from blog.models import Category, Tag
 
 admin.autodiscover()
 
@@ -29,5 +29,9 @@ urlpatterns = patterns('',
     url(r'^categories/(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryListView.as_view(
         paginate_by=5,
         model=Category,
+        )),
+    url(r'^tags/(?P<slug>[a-zA-Z0-9-]+)/?$', TagListView.as_view(
+        paginate_by=5,
+        model=Tag,
         )),
 )

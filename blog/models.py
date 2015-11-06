@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
@@ -24,6 +25,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
@@ -34,11 +36,12 @@ class Tag(models.Model):
             self.slug = slugify(str(self.name))
         super(Tag, self).save()
 
-    def get_abosulte_url(self):
-        return "/tag/%s/" % (self.slug)
+    def get_absolute_url(self):
+        return "/tags/%s/" % (self.slug)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
+
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
