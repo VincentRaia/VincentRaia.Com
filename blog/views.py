@@ -1,18 +1,8 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from blog.models import Post
-from django.core.paginator import Paginator, EmptyPage
-from django.db.models import Q
-
-
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
-from django.views.generic import ListView
-#from blogengine.models import Category, Post, Tag
-from django.contrib.syndication.views import Feed
-from django.utils.encoding import force_text
-from django.utils.safestring import mark_safe
-import markdown2
 
 # Create your views here.
 def index(request):
