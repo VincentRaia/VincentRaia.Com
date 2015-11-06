@@ -27,7 +27,7 @@ def getSearchResults(request):
     page = request.GET.get('page', 1)
     # Query the database
     if query:
-        results = Post.objects.filter(Q(content__icontains=query) | Q(title__icontains=query))
+        results = Post.objects.filter(Q(content__icontains=query) | Q(title__icontains=query) | Q(category__name__icontains=str(query)))
     else:
         results = None
     # Add pagination
