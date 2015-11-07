@@ -34,5 +34,4 @@ urlpatterns = patterns('',
         paginate_by=5,
         model=Tag,
         )),
-    url(r'^toptags/', 'blog.views.tags'),
 )

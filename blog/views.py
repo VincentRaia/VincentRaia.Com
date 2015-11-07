@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from blog.models import Post, Category, Tag
-from django.core.paginator import Paginator, EmptyPage
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.db.models import Q
 from django.views.generic import ListView
 
@@ -11,7 +11,15 @@ def index(request):
     # get blog posts that are published
     posts = Post.objects.filter(published=True)
     tags = Tag.objects.all()
+    paginator = Paginator(posts, 5)
     # now return the rendered template
+    try:
+        page = int(request.GET.get("page", '1'))
+    except ValueError: page = 1
+    try:
+        posts = paginator.page(page)
+    except (InvalidPage, EmptyPage):
+        posts = paginator.page(paginator.num_pages)
     return render(request, 'blog_posts.html', {'posts': posts, 'tags': tags})
 
 def post(request, slug):
