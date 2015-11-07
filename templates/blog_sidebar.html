@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <ul class="list-unstyled">
-                    <li><a href="/categories/equities/">Equities</a>
+                    <li><a href="">Equities</a>
                     </li>
                     <li><a href="#">Options</a>
                     </li>
@@ -47,6 +47,20 @@
             <!-- /.col-lg-6 -->
         </div>
         <!-- /.row -->
+    </div>
+
+    <!-- Top Tags -->
+    <div class="well">
+        <h4>Top Tags</h4>
+        {% block content %}
+            {% for tag in tags %}
+                {% if tag == tags.last %}
+                    <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
+                {% else %}
+                    <a href="{{tag.get_absolute_url}}">{{tag.name}},</a>
+                {% endif %}
+            {% endfor %}
+        {% endblock %}
     </div>
 
     <!-- Side Widget Well -->

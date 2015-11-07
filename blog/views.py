@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from blog.models import Post, Category, Tag
-from django.shortcuts import get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
 from django.views.generic import ListView
@@ -11,15 +10,16 @@ from django.views.generic import ListView
 def index(request):
     # get blog posts that are published
     posts = Post.objects.filter(published=True)
+    tags = Tag.objects.all()
     # now return the rendered template
-    return render(request, 'blog_posts.html', {'posts': posts})
-
+    return render(request, 'blog_posts.html', {'posts': posts, 'tags': tags})
 
 def post(request, slug):
     # get the Post object
     post = get_object_or_404(Post, slug=slug)
+    tags = Tag.objects.all()
     # return the rendered template
-    return render(request, 'blog_post.html', {'post': post})
+    return render(request, 'blog_post.html', {'post': post, 'tags': tags})
 
 
 def getSearchResults(request):
@@ -43,10 +43,10 @@ def getSearchResults(request):
     except EmptyPage:
         returned_page = pages.page(pages.num_pages)
     # Display the search results
-    return render_to_response('blog/post_list.html',
-                              {'page_obj': returned_page,
-                               'object_list': returned_page.object_list,
-                               'search': query})
+    tags = Tag.objects.all()
+    return render_to_response('blog/post_list.html', {'page_obj': returned_page,
+                                                      'object_list': returned_page.object_list, 'search': query,
+                                                      'tags': tags})
 
 
 class CategoryListView(ListView):
@@ -54,6 +54,7 @@ class CategoryListView(ListView):
         slug = self.kwargs['slug']
         try:
             category = Category.objects.get(slug=slug)
+            tags = Tag.objects.all()
             return Post.objects.filter(category=category)
         except Category.DoesNotExist:
             return Post.objects.none()
