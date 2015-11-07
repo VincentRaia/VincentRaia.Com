@@ -16,12 +16,19 @@
                 {% endblock %}
                 <!-- Pager -->
                 <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
+                    {% if posts.object_list and posts.paginator.num_pages > 1 %}
                     <li class="next">
-                        <a href="#">Newer &rarr;</a>
+                        {% if posts.has_next %}
+                            <a href="?page={{ posts.next_page_number }}">Older &rarr;</a>
+                        {% endif %}
                     </li>
+                    <li class="previous">
+                        {% if posts.has_previous %}
+                            <a href="?page={{ posts.previous_page_number }}">&larr; Newer</a>
+                        {% endif %}
+                    </li>
+
+                    {% endif %}
                 </ul>
             </div>
             {% include 'blog_sidebar.html' %}
