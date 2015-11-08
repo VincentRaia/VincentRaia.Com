@@ -4,15 +4,11 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.db.models import Q
 from django.views.generic import ListView
 
-# Create your views here.
-
 
 def index(request):
-    # get blog posts that are published
     posts = Post.objects.filter(published=True)
     tags = Tag.objects.all()
     paginator = Paginator(posts, 5)
-    # now return the rendered template
     try:
         page = int(request.GET.get("page", '1'))
     except ValueError: page = 1
@@ -21,6 +17,7 @@ def index(request):
     except (InvalidPage, EmptyPage):
         posts = paginator.page(paginator.num_pages)
     return render(request, 'blog_posts.html', {'posts': posts, 'tags': tags})
+
 
 def post(request, slug):
     # get the Post object
@@ -62,7 +59,6 @@ class CategoryListView(ListView):
         slug = self.kwargs['slug']
         try:
             category = Category.objects.get(slug=slug)
-            tags = Tag.objects.all()
             return Post.objects.filter(category=category)
         except Category.DoesNotExist:
             return Post.objects.none()

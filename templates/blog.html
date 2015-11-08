@@ -17,14 +17,14 @@
                 <!-- Pager -->
                 <ul class="pager">
                     {% if posts.object_list and posts.paginator.num_pages > 1 %}
-                    <li class="next">
+                    <li class="previous">
                         {% if posts.has_next %}
-                            <a href="?page={{ posts.next_page_number }}">Older &rarr;</a>
+                            <a href="?page={{ posts.next_page_number }}">&larr; Older</a>
                         {% endif %}
                     </li>
-                    <li class="previous">
+                    <li class="next">
                         {% if posts.has_previous %}
-                            <a href="?page={{ posts.previous_page_number }}">&larr; Newer</a>
+                            <a href="?page={{ posts.previous_page_number }}">Newer &rarr;</a>
                         {% endif %}
                     </li>
 
